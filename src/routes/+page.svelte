@@ -97,11 +97,9 @@
       
       if (char >= 'A' && char <= 'Z') {
         encoded += BigInt(char.charCodeAt(0) - 'A'.charCodeAt(0) + 1);
-      } 
-      else if (char >= 'a' && char <= 'z') {
+      } else if (char >= 'a' && char <= 'z') {
         encoded += BigInt(char.charCodeAt(0) - 'a'.charCodeAt(0) + 1);
-      }
-      else if (char >= '0' && char <= '9') {
+      } else if (char >= '0' && char <= '9') {
         encoded += BigInt(char.charCodeAt(0) - '0'.charCodeAt(0) + 27);
       } else if (char === '-') {
         encoded += 37n;
