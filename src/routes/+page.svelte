@@ -194,7 +194,6 @@
     padding: 2rem;
     font-family: 'Roboto', sans-serif;
     background: #ffffff;
-    min-height: 100vh;
   }
   
   h1 {
