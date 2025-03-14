@@ -138,7 +138,7 @@
     <div class="player-card dark-theme">
       <div class="card-header">
         <img id="playerLogo" src="favicon.png" alt="M17 Logo">
-        <div class="card-title">Callsign Converter</div>
+        <div class="card-title">Callsign converter</div>
       </div>
       
       <div class="card-body">
@@ -149,20 +149,20 @@
             type="text"
             bind:value={callsign}
             oninput={handleCallsignInput}
-            placeholder="Enter callsign (e.g. W1AW)"
+            placeholder="Enter callsign (e.g. N0CALL)"
             maxlength="9"
             class="converter-input"
           />
         </div>
         
         <div class="input-group">
-          <label for="address" class="label">Hex Address (48-bit):</label>
+          <label for="address" class="label">Hex address (48-bit):</label>
           <input 
             id="address"
             type="text"
             bind:value={address}
             oninput={handleAddressInput}
-            placeholder="Enter hex address (e.g. 000014741657)"
+            placeholder="Enter hex address (e.g. 0286ABCC1657)"
             class="converter-input"
           />
         </div>
@@ -179,7 +179,7 @@
           </span>
         </div>
         <a href="https://github.com/OE3ANC/m17web-callculator" class="github-link" target="_blank" rel="noopener noreferrer">
-          m17web-callculator
+          m17web-CALLculator
         </a>
       </div>
     </div>
@@ -187,11 +187,11 @@
   <div class="player-card dark-theme">
     <div class="card-header">
       <img id="playerLogo" src="favicon.png" alt="M17 Logo">
-      <div class="card-title">M17 Address Encoding Reference</div>
+      <div class="card-title">M17 address encoding reference</div>
     </div>
     
     <div class="card-body">
-      <h3>Character Set</h3>
+      <h3>Character set</h3>
       <p>M17 uses a 40-character alphabet for its 48-bit (6-byte) addresses:</p>
       <ul>
         <li>Space (value 0, also used for invalid characters)</li>
@@ -200,7 +200,7 @@
         <li>Special: hyphen (37), slash (38), dot (39)</li>
       </ul>
       
-      <h3>Encoding Process</h3>
+      <h3>Encoding process</h3>
       <ul>
         <li>Callsigns encode <strong>backwards</strong> (last character to first)</li>
         <li>First character is in least significant bits</li>
@@ -208,11 +208,11 @@
         <li>Final address is in big endian (network byte order)</li>
       </ul>
       
-      <h3>Address Space</h3>
+      <h3>Address space</h3>
       <table class="address-table">
         <thead>
           <tr>
-            <th>Address Range</th>
+            <th>Address range</th>
             <th>Category</th>
             <th>Notes</th>
           </tr>
@@ -241,16 +241,16 @@
         </tbody>
       </table>
       
-      <h3>Usage Examples</h3>
+      <h3>Usage examples</h3>
       <p>Source addresses typically decode to amateur radio callsigns, while destination addresses often represent commands (e.g., ECHO, UNLINK) or reflector modules (e.g., M17-M17 C).</p>
     </div>
     
     <div class="card-footer">
       <div class="status-container">
-        <span class="status-connected">Reference Guide</span>
+        <span class="status-connected">Reference guide</span>
       </div>
       <a href="https://github.com/M17-Project/M17_spec" class="github-link" target="_blank" rel="noopener noreferrer">
-        M17 Specification
+        M17 specification
       </a>
     </div>
   </div>
