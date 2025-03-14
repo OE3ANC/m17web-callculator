@@ -134,8 +134,6 @@
 </script>
 
 <main>
-  <h1>M17 Protocol Callsign Converter</h1>
-  
   <div class="converter-container">
     <div class="player-card dark-theme">
       <div class="card-header">
@@ -164,7 +162,7 @@
             type="text"
             bind:value={address}
             oninput={handleAddressInput}
-            placeholder="Enter hex address (e.g. 000000BC614E)"
+            placeholder="Enter hex address (e.g. 000014741657)"
             class="converter-input"
           />
         </div>
@@ -185,7 +183,78 @@
         </a>
       </div>
     </div>
+
+  <div class="player-card dark-theme">
+    <div class="card-header">
+      <img id="playerLogo" src="favicon.png" alt="M17 Logo">
+      <div class="card-title">M17 Address Encoding Reference</div>
+    </div>
+    
+    <div class="card-body">
+      <h3>Character Set</h3>
+      <p>M17 uses a 40-character alphabet for its 48-bit (6-byte) addresses:</p>
+      <ul>
+        <li>Space (value 0, also used for invalid characters)</li>
+        <li>A-Z (values 1-26)</li>
+        <li>0-9 (values 27-36)</li>
+        <li>Special: hyphen (37), slash (38), dot (39)</li>
+      </ul>
+      
+      <h3>Encoding Process</h3>
+      <ul>
+        <li>Callsigns encode <strong>backwards</strong> (last character to first)</li>
+        <li>First character is in least significant bits</li>
+        <li>Trailing spaces don't affect the encoded value</li>
+        <li>Final address is in big endian (network byte order)</li>
+      </ul>
+      
+      <h3>Address Space</h3>
+      <table class="address-table">
+        <thead>
+          <tr>
+            <th>Address Range</th>
+            <th>Category</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0x000000000000</td>
+            <td>INVALID</td>
+            <td>Forbidden</td>
+          </tr>
+          <tr>
+            <td>0x000000000001 - 0xEE6B27FFFFFF</td>
+            <td>Codable</td>
+            <td>"A" to "........." (~262 trillion)</td>
+          </tr>
+          <tr>
+            <td>0xEE6B28000000 - 0xFFFFFFFFFFFE</td>
+            <td>Uncodable</td>
+            <td>For application use (~19 trillion)</td>
+          </tr>
+          <tr>
+            <td>0xFFFFFFFFFFFF</td>
+            <td>BROADCAST</td>
+            <td>Valid only for destination in RF</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3>Usage Examples</h3>
+      <p>Source addresses typically decode to amateur radio callsigns, while destination addresses often represent commands (e.g., ECHO, UNLINK) or reflector modules (e.g., M17-M17 C).</p>
+    </div>
+    
+    <div class="card-footer">
+      <div class="status-container">
+        <span class="status-connected">Reference Guide</span>
+      </div>
+      <a href="https://github.com/M17-Project/M17_spec" class="github-link" target="_blank" rel="noopener noreferrer">
+        M17 Specification
+      </a>
+    </div>
   </div>
+</div>
 </main>
 
 <style>
@@ -196,13 +265,6 @@
     padding: 2rem;
     font-family: 'Roboto', sans-serif;
     background: #ffffff;
-  }
-  
-  h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 500;
   }
   
   .converter-container {
@@ -348,6 +410,42 @@
   .github-link:hover {
     color: #90CAF9;
     text-decoration: underline;
+  }
+
+  .address-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .address-table th, .address-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .address-table th {
+    background-color: rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+  }
+  
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #90CAF9;
+  }
+  
+  ul {
+    margin: 0 0 15px 20px;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+    font-size: 14px;
   }
 
 </style>
