@@ -5,7 +5,7 @@
   let error = $state<string>('');
 
   // Character validation for callsigns
-  const validChars = /^[A-Z0-9\-/. ]*$/;
+  const validChars = /^[A-Za-z0-9\-/. ]*$/;
 
   // Convert callsign to hex address
   function callsignToAddress(): void {
