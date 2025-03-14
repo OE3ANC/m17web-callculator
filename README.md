@@ -1,1 +1,4 @@
-# m17web-callculator
+# M17 Callsign Calculator
+
+Basic M17 Callsign Calculator
+
